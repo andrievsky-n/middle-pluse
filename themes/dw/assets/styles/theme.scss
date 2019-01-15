@@ -1,0 +1,222 @@
+@import 'normalize.css/normalize';
+@import '../../../../src/styles/vars';
+@import '../../../../src/styles/mixins';
+@import '../../../../src/styles/fonts';
+@import '../../../../src/styles/common';
+@import '../../../../src/styles/icons/icons-sizes';
+
+@import '../../../../node_modules/simple-scrollbar/simple-scrollbar';
+
+@include font-face('Roboto', '../fonts/roboto-regular', normal, italic, $exts: woff woff2 ttf);
+@include font-face('Roboto', '../fonts/roboto-bold', 700, italic, $exts: woff woff2 ttf);
+@include font-face('Roboto', '../fonts/roboto-thin', 300, italic, $exts: woff woff2 ttf);
+
+html, body {
+    @media (max-width: 31.24em) {
+        min-height: 0;
+    }
+}
+
+.Frame-body,
+[dir="ltr"] .Frame-body {
+    display: block;
+
+    @media (max-width: 31.24em) {
+        -webkit-margin-end: 0;
+        margin-right: 0;
+        margin-left: 0;
+        height: 100%;
+        transform: none;
+    }
+}
+
+.Frame-panel {
+    position: static;
+    overflow: visible;
+}
+
+.Pen-preview {
+    margin: 0;
+    border: none;
+    background-color: inherit;
+    height: 100%!important;
+    max-height: 100%;
+}
+
+.Preview-wrapper {
+    max-width: none;
+    width: 100%;
+}
+
+.fractal-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+
+    &__inner {
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        transition: 0.4s;
+        transform: translate(250px, 0);
+    }
+
+    &_open {
+        .fractal-menu {
+            &__inner {
+                transform: none;
+            }
+
+            &__btn {
+                background-image: url('../images/Close.svg');
+            }
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        bottom: 30px;
+        right: 280px;
+        width: 62px;
+        height: 62px;
+        background-image: url('../images/Monitor.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: auto;
+        color: transparent;
+        background-color: #1fb8f1;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+    }
+
+    &__nav {
+        pointer-events: auto;
+        width: 250px;
+        height: 100%;
+        background-color: white;
+
+        &::after {
+/*             position: absolute;
+right: rem(4);
+top: 0;
+width: rem(5);
+height: 100vh;
+content: '';
+background-color: #e7ebee; */
+        }
+    }
+
+    &__tree {
+        height: 100vh;
+        padding: 30px 28px;
+        overflow-x: hidden;
+    }
+
+    &__item-wrap {
+        & + & {
+            padding-top: 10px;
+        }
+
+        &.is-current {
+            .fractal-menu__item {
+                color: #007dc6;
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #3a4751;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        transition: .4s;
+
+        &:hover {
+            color: #007dc6;
+        }
+
+        & + & {
+            padding-top: 10px;
+        }
+
+        .Status {
+            display: none;
+        }
+    }
+
+    .ss-scroll {
+        width: 7px;
+        margin-left: -31px;
+        background-color: #becbd4;
+        opacity: 1;
+
+        &::after {
+            position: fixed;
+            right: 4px;
+            top: 0;
+            width: 5px;
+
+            height: 100vh;
+            content: '';
+            background-color: inherit;
+            opacity: 0.15;
+        }
+    }
+
+    .ss-content {
+        overflow-x: hidden;
+    }
+}
+
+
+
+
+@include below('767px') {
+
+    .fractal-menu {
+        &__inner {
+            width: 100%;
+            transform: none;
+        }
+
+        &__nav {
+            width: 100%;
+            transform: translate(100%, 0);
+            transition: 0.4s;
+        }
+
+        &__btn {
+            right: 16px;
+            bottom: 16px;
+            width: 56px;
+            height: 56px;
+            z-index: 10;
+        }
+
+        &_open {
+            .fractal-menu {
+                &__nav {
+                    transform: none;
+                }
+
+                &__btn {
+                }
+            }
+        }
+    }
+
+}

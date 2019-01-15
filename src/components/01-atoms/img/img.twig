@@ -1,0 +1,5 @@
+{% if src != null and src != '' %}
+    {% set src = assets~src %}
+{% endif %}
+
+<img src="{{ src|default('http://www.placecage.com/gif/300/300') }}" class="img {{ class }}" alt="{{ alt }}">

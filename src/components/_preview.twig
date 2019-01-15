@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ _target.label|default(Preview) }}</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="HandheldFriendly" content="true">
+<!-- 
+    <meta property="og:title" content="{{ _target.label|default(Preview) }}">
+    <meta property="og:title" content="">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="300">
+    <meta property="twitter:description" content="">
+    <link rel="image_src">
+ -->
+
+    <link rel="stylesheet" href="{{ '/assets/styles/main.min.css' | path }}">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+{{ yield }}
+
+<script src="{{ '/assets/scripts/main.min.js' | path }}"></script>
+</body>
+</html>

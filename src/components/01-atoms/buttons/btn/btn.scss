@@ -1,0 +1,25 @@
+.btn {
+    padding: 10px;
+    border: none;
+
+    color: #fff;
+
+    border-radius: 4px;
+    cursor: pointer;
+
+    &_primary {
+        background: darkcyan;
+    }
+
+    &_success {
+        background: yellowgreen;
+    }
+
+    &_danger {
+        background: tomato;
+    }
+
+    &_link {
+        color: black;
+    }
+}

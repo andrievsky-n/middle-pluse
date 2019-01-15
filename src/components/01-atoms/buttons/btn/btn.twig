@@ -1,0 +1,7 @@
+{% if tag == undefined %}
+	{% set tag = "button" %}
+{% endif %}
+
+<{{tag}} class="btn {{class}}" {{ attr }} >
+	{{text}}
+</{{tag}}>

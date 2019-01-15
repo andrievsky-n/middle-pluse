@@ -1,0 +1,16 @@
+{% import "macros/menu.nunj" as menu %}
+
+<div class='fractal-menu'>
+    <div class='fractal-menu__inner'>
+        <button class='fractal-menu__btn'>Кнопка</button>
+        <nav class='fractal-menu__nav'>
+            
+            {% if frctl.components.size %}
+                <div class="Navigation-group">
+                    {{ menu.tree(frctl.components, entity, request) }}
+                </div>
+            {% endif %}
+
+        </nav>
+    </div>
+</div>

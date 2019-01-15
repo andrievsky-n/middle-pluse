@@ -1,0 +1,8 @@
+.icon {
+{{#shapes}}
+    &_{{base}} {
+        width: rem({{width.inner}});
+        height: rem({{height.inner}});
+    }
+{{/shapes}}
+}

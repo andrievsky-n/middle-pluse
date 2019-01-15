@@ -1,0 +1,37 @@
+{% import "macros/status.nunj" as status %}
+
+{% macro tree(root, current, request) %}
+<div class="fractal-menu__tree" data-behaviour="tree" id="tree-{{ root.name }}">
+    <!-- <h3 class="Tree-title">{{ root.label }}</h3> -->
+    {{ leaves(root.filter('isHidden', false).items(), root, current, 2, request) }}
+</div>
+{% endmacro %}
+
+
+{% macro leaves(items, root, current, depth, request) %}
+    {% for item in items %}
+
+        {% if item.isCollection %}
+            {% set parentName = item.name %}
+        {% endif %}
+
+        {% if item.isCollection or (item.isComponent and not item.isCollated and item.variants().filter('isHidden', false).size > 1 and item.name == 'pages') %}
+            {% if item.isComponent and not item.isCollated %}
+            {% set items = item.variants().filter('isHidden', false).items() %}
+            {% else %}
+            {% set items = item.filter('isHidden', false).items() %}
+            {% endif %}
+            {{ leaves(items, root, current, (depth + 1), request) }}
+        {% else %}
+        {% set isCurrent = true if (current and (current.id == item.id)) else false %}
+            {% if parentName == 'pages' %}
+                <div class="fractal-menu__item-wrap{% if isCurrent %} is-current{% endif %}"{% if isCurrent %} data-state="current"{% endif %} data-role="item">
+                    <a class="fractal-menu__item " href="{{ path( (item | url), request) }}" data-pjax>
+                        <span>{{ item.label }}</span>
+                    {% if item.status %}{{ status.unlabelled(item.status) }}{% endif %}
+                    </a>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
