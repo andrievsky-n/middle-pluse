@@ -5,15 +5,12 @@
 {% embed "@page" with { class: pageClass } %}
     {% block content %}
 
-        {% include "@header" with header %}
-
         {% embed "@main" with { class: mainClass } %}
             {% block content %}
                 {{ content }}
             {% endblock %}
         {% endembed  %}
 
-        {% include "@footer" %}
     {% endblock %}
 {% endembed  %}
 

@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+    line-height: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#exam {
+    position: relative;
+
+    display: inline-block;
+    margin: 0 auto;
+    max-width: 100%;
+
+    &:fullscreen {
+        background-color: #fff;
+    }
+
+    canvas {
+        position: relative;
+
+        display: block;
+        max-width: 100%;
+
+        border: 2px solid rgba(128, 128, 128, .35);
+    }
+
+    #tools {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        display: flex;
+        justify-content: space-between;
+
+        line-height: 1;
+
+        &.hide {
+            display: none;
+        }
+    }
+}
